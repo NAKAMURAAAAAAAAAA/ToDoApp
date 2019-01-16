@@ -16,6 +16,7 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         guard let TodoCell = tableView.dequeueReusableCell(withIdentifier: "TodoCell", for: indexPath) as? cellTableViewCell  else {
             fatalError("The dequeued cell is not an instance of cellTableViewCell.")
         }
+        
         //変数の中身を作る
         TodoCell.label.text = TodoKobetsunonakami[indexPath.row]
         //戻り値の設定（表示する中身)
