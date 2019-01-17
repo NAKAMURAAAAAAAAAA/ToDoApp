@@ -14,7 +14,7 @@ class TodoKobetsunonakami: NSObject, NSCoding{
     
     required init?(coder aDecoder: NSCoder) {
         self.todotext = (aDecoder.decodeObject(forKey: "todotext") as! String)
-        self.done = (aDecoder.decodeObject(forKey: "done") as! Bool)
+        self.done = aDecoder.decodeBool(forKey: "done")
     }
     
     func encode(with aCoder: NSCoder) {
