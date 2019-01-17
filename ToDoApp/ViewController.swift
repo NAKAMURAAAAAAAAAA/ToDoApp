@@ -19,7 +19,8 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
     //UITableView、numberOfRowsInSectionの追加(表示するcell数を決める)
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     //戻り値の設定(表示するcell数)
-        return todos.count
+        var todokobetsunonakami = TodoKobetsunonakami(todotext: )
+        return ???.count
     }
     //UITableView、cellForRowAtの追加(表示するcellの中身を決める)
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
