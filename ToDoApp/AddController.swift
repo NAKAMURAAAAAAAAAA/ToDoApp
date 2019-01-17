@@ -2,7 +2,26 @@
 import UIKit
 
 //変数の設置
-var TodoKobetsunonakami = [String]()
+class TodoKobetsunonakami: NSObject, NSCoding{
+    var todotext: String!
+    var done: Bool!
+    
+    init(todotext: String, done: Bool) {
+        self.todotext = todotext
+        self.done = done
+    }
+    
+    
+    required init?(coder aDecoder: NSCoder) {
+        self.todotext = (aDecoder.decodeObject(forKey: "todotext") as! String)
+        self.done = (aDecoder.decodeObject(forKey: "done") as! Bool)
+    }
+    
+    func encode(with aCoder: NSCoder) {
+        if let text = todotext { aCoder.encode(todotext, forKey: "todotext") }
+        if let done = done { aCoder.encode(done, forKey: "done") }
+    }
+}
 
 class AddController: UIViewController {
     
@@ -11,12 +30,11 @@ class AddController: UIViewController {
     
     //追加ボタンの設定
     @IBAction func TodoAddButten(_ sender: Any) {
-        //変数に入力内容を入れる
-        TodoKobetsunonakami.append(TodoTextField.text!)
-        //追加ボタンを押したらフィールドを空にする
+        var todoArray = [TodoKobetsunonakami]()
+        let todo = TodoKobetsunonakami(todotext: TodoTextField.text!, done: false)
+        todoArray.insert(todo, at: 0)
+        UserDefaults.standard.set(NSKeyedArchiver.archivedData(withRootObject: todoArray), forKey: "TodoList")
         TodoTextField.text = ""
-        //変数の中身をUDに追加
-        UserDefaults.standard.set( TodoKobetsunonakami, forKey: "TodoList" )
     }
     
     //最初からあるコード
