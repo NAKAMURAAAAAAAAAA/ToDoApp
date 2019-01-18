@@ -30,10 +30,9 @@ class AddController: UIViewController {
     
     //追加ボタンの設定
     @IBAction func TodoAddButten(_ sender: Any) {
-        var todoArray = [TodoKobetsunonakami]()
         let todo = TodoKobetsunonakami(todotext: TodoTextField.text!, done: false)
-        todoArray.insert(todo, at: 0)
-        UserDefaults.standard.set(NSKeyedArchiver.archivedData(withRootObject: todoArray), forKey: "TodoList")
+        todos.insert(todo, at: 0)
+        UserDefaults.standard.set(NSKeyedArchiver.archivedData(withRootObject: todos), forKey: "TodoList")
         TodoTextField.text = ""
     }
     
